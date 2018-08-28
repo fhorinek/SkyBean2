@@ -1,0 +1,68 @@
+#:kivy 1.8.0
+
+<InfoPopup>:
+    auto_dismiss: False
+    size_hint: 0.4, 0.2
+    title: ""
+
+    ProgressBar:
+        id: progress
+
+<ResetPopup>:
+    auto_dismiss: False
+    size_hint: 0.5, 0.25
+    title: "Reset to factory settings?"
+
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            spacing: 10
+            text: "This will reset all values to factory default setting.\n Your custom setting and profile will be lost!"
+        BoxLayout:
+            size_hint_y: 0.8
+            
+            Widget:
+            Button:
+                text: "Cancel"
+                on_press: root.dismiss()
+            Button:
+                text: "Reset"
+                on_press: root.dismiss(); root.cb()
+        
+
+<AppLayout>:
+    orientation: 'vertical'
+    size: 800, 600
+
+    canvas.before:
+        Color:
+            rgb: 1,1,1
+
+    ActionBar:
+        ActionView:
+            ActionPrevious:
+                with_previous: False
+                title: "SkyBean configurator"
+
+#            ActionButton:
+#                text: ":-)"
+#                on_press: root.button()
+
+            ActionButton:
+                text: "Config"
+                on_press: root.set_screen("cfg")
+
+            ActionButton:
+                text: "Audio"
+                on_press: root.set_screen("profile")
+              
+            ActionButton:
+                text: "Reset"
+                on_press: root.reset_popup.open()
+                id: status               
+                
+#            ActionButton:
+#                id: status 
+
+    ScreenManager:
+        id: sm

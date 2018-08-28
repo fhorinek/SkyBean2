@@ -1,0 +1,18 @@
+How to build enviroments for pyinstaller on linux
+
+linux_env
+
+virtualenv linux_env
+source linux_env/bin/activate
+pip install pyserial
+pip install pyinstaller
+
+
+windows_env
+
+export WINEPREFIX="[absolute path here]vario2_prog/windows_env"
+wine start python-2.7.15.msi
+winecfg: change Z: from / to this folder (otherwise eclipse will try to index root /)
+wine pip install pyserial
+wine pip install pyinstaller
+

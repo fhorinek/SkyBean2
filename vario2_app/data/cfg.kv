@@ -1,0 +1,186 @@
+#:kivy 1.8.0
+#: import icon kivy.garden.iconfonts.icon
+
+<LabelSlider@BoxLayout>:
+    min: 0
+    max: 100
+    step: 1
+    template: "%d"   
+    value: 0
+
+    
+    BoxLayout:
+        orientation: 'horizontal'
+        Label:
+            text: root.template % slider.value
+        Slider:
+            id: slider
+            min: root.min
+            max: root.max
+            value: root.value            
+            step: root.step
+            size_hint_x: 5
+            value_track: True
+            value_track_color: 0.20, 0.71, 0.90, 0.8 
+            
+            
+<ValuePair@BoxLayout>:
+    name: "Name"
+    icon: "fa-times"
+    
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_x: 0.5
+                        
+        Label:
+            markup: True
+            text: icon(root.icon)
+            font_size: "30dp"
+            size_hint_x: 0.5
+            valign: 'top'
+            halign: 'center'
+            text_size: self.size
+            
+        Label:
+            padding_y: "5dp"
+            font_size: "20dp"
+            text: root.name
+            halign: 'left'
+            valign: 'top'
+            text_size: self.size
+           
+ 
+<TholdEdit@BoxLayout>:
+    value: 0
+    min: -10
+    max: 10
+    step: 0.1
+    format: "%0.1f m/s"
+    dots: 1
+
+    Label:
+        size_hint_x: 4
+        text: root.format % root.value
+        multiline: False
+        font_size: "20dp"
+    BoxLayout:
+        orientation: 'horizontal'
+        Button:
+            markup: True
+            text: icon("fa-chevron-up")
+            on_press: root.value = min(root.value + root.step, root.max)    
+        Button:
+            markup: True
+            text: icon("fa-chevron-down")           
+            on_press: root.value = max(root.value - root.step, root.min)
+    Label:
+        markup: True
+        size_hint_x: 4
+        font_size: "20dp"
+        halign: 'left'
+        text_size: self.size
+        text: " " + (" "+ icon("fa-circle")) * root.dots
+ 
+Screen:
+    BoxLayout:
+        orientation: "vertical"
+        padding: "20dp"
+        spacing: "5dp"
+
+        ValuePair:
+            name: "Buzzer volume"
+            icon: "fa-volume-up"
+            LabelSlider:
+                id: volume
+                min: 1
+                max: 4
+                value: 4
+
+        ValuePair:
+            name: "Auto power off"
+            icon: "fa-power-off"
+            BoxLayout:
+                orientation: 'horizontal'
+                LabelSlider:
+                    id: auto_power_off
+                    min: 1
+                    max: 60
+                    step: 1      
+                    value: 5
+                    size_hint_x: 6
+                    template: "%d min" 
+                Switch:
+                    id: auto_power_off_switch
+                    active: True
+
+        ValuePair:
+            name: "Active profile"
+            icon: "fa-chart-bar"
+            BoxLayout:
+                orientation: 'horizontal'
+                Button:
+                    id: profile_1
+                    text: "Fast"
+                Button:
+                    id: profile_2
+                    text: "Slow"
+                Button:
+                    id: profile_3
+                    text: "Custom"
+                
+        ValuePair:
+            name: "Silent Start"
+            icon: "fa-volume-off"
+            Switch:
+                id: silent_start
+    
+        ValuePair:
+            name: "Fluid audio"
+            icon: "fa-signal"
+            Switch:
+                id: fluid_audio
+    
+        ValuePair:
+            size_hint_y: 5
+            name: "Lift thresholds"
+            icon: "fa-cloud-upload-alt"
+            BoxLayout:
+                orientation: 'vertical'
+                TholdEdit:
+                    id: lift_1
+                    dots: 1
+                TholdEdit:
+                    id: lift_2
+                    dots: 2
+                TholdEdit:
+                    id: lift_3
+                    dots: 3
+                TholdEdit:
+                    id: lift_4
+                    dots: 4
+                TholdEdit:
+                    id: lift_5
+                    dots: 5
+
+        ValuePair:
+            size_hint_y: 5
+            name: "Sink thresholds"
+            icon: "fa-cloud-download-alt"
+            BoxLayout:
+                orientation: 'vertical'
+                TholdEdit:
+                    id: sink_1
+                    dots: 1
+                TholdEdit:
+                    id: sink_2
+                    dots: 2
+                TholdEdit:
+                    id: sink_3
+                    dots: 3
+                TholdEdit:
+                    id: sink_4
+                    dots: 4
+                TholdEdit:
+                    id: sink_5
+                    dots: 5
+        

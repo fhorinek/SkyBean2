@@ -1,0 +1,16 @@
+How to build enviroments for pyinstaller on linux
+
+linux_env
+
+virtualenv -p python3 linux_env
+source linux_env/bin/activate
+pip install pyserial
+pip install pyinstaller
+pip install cython
+pip install kivy
+pip install pygame
+garden install iconfonts --kivy
+
+windows_env
+
+TBD

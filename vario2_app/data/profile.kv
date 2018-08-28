@@ -1,0 +1,78 @@
+#:kivy 1.8.0
+
+Screen:
+    BoxLayout:
+        orientation: 'vertical'
+        
+        ValuePair:
+            name: "Active profile"
+            icon: "fa-chart-bar"
+            BoxLayout:
+                orientation: 'horizontal'
+                Button:
+                    id: profile_1
+                    text: "Fast"
+                Button:
+                    id: profile_2
+                    text: "Slow"
+                Button:
+                    id: profile_3
+                    text: "Custom"     
+        
+        ValuePair:
+            name: "Lift settings"
+            icon: "fa-angle-double-up"
+            BoxLayout:
+                orientation: 'horizontal'
+                Button:
+                    id: lift_index_1
+                Button:
+                    id: lift_index_2
+                Button:
+                    id: lift_index_3
+                Button:
+                    id: lift_index_4
+                Button:
+                    id: lift_index_5
+
+        ValuePair:
+            name: "Sink settings"
+            icon: "fa-angle-double-down"
+            BoxLayout:
+                orientation: 'horizontal'
+                Button:
+                    id: sink_index_1
+                Button:
+                    id: sink_index_2
+                Button:
+                    id: sink_index_3
+                Button:
+                    id: sink_index_4
+                Button:
+                    id: sink_index_5
+
+        ValuePair:
+            name: "Demo"
+            icon: "fa-music"
+
+            Label:
+                text: "Drag over graph for demo"
+                id: demo_label
+                
+        BoxLayout:
+            size_hint_y: 0.5
+            Widget:
+            Label:
+                text: "Frequency"
+                color: 0.59, 0.73, 0.80, 1
+            Label:
+                text: "Pause"
+                color: 0.97, 0.27, 0.29, 1
+            Label:
+                text: "Length"
+                color: 0.86, 0.86, 0.86, 1
+            Widget:
+        
+        EditableGraph
+            size_hint_y: 12
+            id: eg

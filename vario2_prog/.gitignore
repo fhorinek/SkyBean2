@@ -1,4 +1,5 @@
 /linux_env/
 /windows_env/
+/mac_env/
 /build/
 __pycache__/

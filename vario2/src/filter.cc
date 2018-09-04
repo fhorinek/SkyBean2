@@ -21,7 +21,6 @@ extern float ram_climb_noise;
 // 25 -> 0.5 s derivation
 // 50 -> 1.0 s derivation
 #define ALT_CNT	50
-//#define LAST_ALT_CNT	50
 
 float last_alt[ALT_CNT];
 uint8_t last_alt_index = 0;
@@ -129,8 +128,8 @@ void filter_step()
 	// - e.g. if you have the difference between the current value and the
 	//   value 0.5 seconds ago, it will be if meters per 0.5 second
 	//   so you need to multiply it by 2 to get meter per second
-	// - sensor reading frequency is 50Hz
-	climb *= 50 / cfg.int_interval;
+	// - sensor reading frequency is 100Hz
+	climb *= 100 / cfg.int_interval;
 
 	//remove noise
 	if (abs(climb) < abs(ram_climb_noise))

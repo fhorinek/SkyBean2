@@ -64,7 +64,7 @@ void init_low_power()
 	PR.PRPD = 0b01011101;
 
 	//NVM EE power reduction mode
-	NVM.CTRLB |= 0b00000010;git@github.com:fhorinek/SkyBean2.git
+	NVM.CTRLB |= 0b00000010;
 
 	//disable digital buffer for bat adc
 	PORTA.PIN3CTRL |= 0b00000111;

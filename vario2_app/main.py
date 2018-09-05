@@ -16,13 +16,8 @@ from collections import deque, OrderedDict
 from graph import EditableGraph, Axis, LineData
 from kivy.clock import Clock
 
-import os
-import sys
 
-def resource_path(*relative):
-    if hasattr(sys, "_MEIPASS"):
-        return os.path.join(sys._MEIPASS, *relative)
-    return os.path.join(*relative)
+from common import resource_path
 
 
 iconfonts.register('default_font', resource_path('data', 'fa-regular-400.ttf'), resource_path('data', 'fontawesome.fontd'))
@@ -373,6 +368,7 @@ class AppLayout(BoxLayout):
 class Vario2App(App):
     
     def build(self):
+        self.icon = resource_path("data", "icon.png")
         self.layout = AppLayout()
         return self.layout
             

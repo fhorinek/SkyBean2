@@ -1,4 +1,4 @@
-How to build enviroments for pyinstaller on linux
+How to build enviroments for pyinstaller
 
 linux_env
 
@@ -8,11 +8,23 @@ pip install pyserial
 pip install pyinstaller
 
 
-windows_env
+windows_env (using wine on linux)
 
 export WINEPREFIX="[absolute path here]vario2_prog/windows_env"
 wine start python-2.7.15.msi
 winecfg: change Z: from / to this folder (otherwise eclipse will try to index root /)
 wine pip install pyserial
 wine pip install pyinstaller
+
+mac_env (using Mac)
+
+install pip
+pip install virtualenv --user
+add "export PATH=$PATH:~/Library/Python/2.7/bin" to ~/.profile
+restart terminal
+virtualenv mac_env
+source mac_env/bin/activate
+pip install pyserial
+pip install pyinstaller
+
 

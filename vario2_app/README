@@ -14,3 +14,23 @@ garden install iconfonts --kivy
 windows_env
 
 TBD
+
+mac_env
+
+NOTE:
+add to ~/.profile
+eval "$(pyenv init -)"eval "$(pyenv virtualenv-init -)"
+
+
+Install homebrew
+brew install python3
+brew install pyenv
+brew install pyenv-virtualenv
+env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.6.5
+pyenv virtualenv 3.6.5 mac_env
+pyenv activate mac_env
+pip install pyserial
+pip install pyinstaller
+pip install cython
+pip install kivy
+garden install iconfonts --kivy

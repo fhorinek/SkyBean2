@@ -29,7 +29,7 @@ class pc_parser(base_parser):
             msg = ""
             for c in data:
                 msg += "%c" % chr(c)
-            print("Read: " + msg)
+#            print("Read: " + msg)
 #                 
 #             msg = ""
 #             for c in data:

@@ -25,4 +25,5 @@ for c in data:
         
 f.write("};\n")
     
+print "done"
     

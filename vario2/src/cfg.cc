@@ -18,7 +18,7 @@ struct ee_mem EEMEM ee =
             //lift_steps[5];        //10    6       -1500 - 1500 (in cm/s)
             {10, 20, 30, 40, 50},
             //sink_steps[5];        //10    16      -1500 - 1500 (in cm/s)
-            {-100, -150, -200, -250, -1000},
+            {-200, -300, -400, -600, -1000},
             //kalman_q;             //4     26
              0.001,
             //kalman_r;             //4     30
@@ -47,7 +47,7 @@ struct ee_mem EEMEM ee =
 			//lift treshold
 			0,
 			//sink treshold
-			0,
+			1,
 			//enabled (not used)
 			1,
 			//reserved[6]
@@ -66,7 +66,7 @@ struct ee_mem EEMEM ee =
 			//lift treshold
 			0,
 			//sink treshold
-			0,
+			1,
 			//enabled (not used)
 			1,
 			//reserved[6]
@@ -85,7 +85,7 @@ struct ee_mem EEMEM ee =
 			//lift treshold
 			0,
 			//sink treshold
-			0,
+			1,
 			//enabled (not used)
 			1,
 			//reserved[6]

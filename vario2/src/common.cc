@@ -206,7 +206,7 @@ void LoadEEPROM()
 void StoreVolume()
 {
     eeprom_busy_wait();
-    eeprom_update_byte(&ee.cfg.buzzer_volume, cfg.buzzer_volume);
+    eeprom_update_byte_fixed(&ee.cfg.buzzer_volume, cfg.buzzer_volume);
 
     //NVM EE power reduction mode
     NVM.CTRLB |= 0b00000010;
@@ -215,7 +215,7 @@ void StoreVolume()
 void StoreLift()
 {
     eeprom_busy_wait();
-    eeprom_update_byte(&ee.prof[cfg.selected_profile].lift_treshold, prof.lift_treshold);
+    eeprom_update_byte_fixed(&ee.prof[cfg.selected_profile].lift_treshold, prof.lift_treshold);
 
     //NVM EE power reduction mode
     NVM.CTRLB |= 0b00000010;
@@ -224,7 +224,7 @@ void StoreLift()
 void StoreSink()
 {
     eeprom_busy_wait();
-    eeprom_update_byte(&ee.prof[cfg.selected_profile].sink_treshold, prof.sink_treshold);
+    eeprom_update_byte_fixed(&ee.prof[cfg.selected_profile].sink_treshold, prof.sink_treshold);
 
     //NVM EE power reduction mode
     NVM.CTRLB |= 0b00000010;
@@ -233,7 +233,7 @@ void StoreSink()
 void LoadProfile()
 {
     eeprom_busy_wait();
-    eeprom_update_byte(&ee.cfg.selected_profile, cfg.selected_profile);
+    eeprom_update_byte_fixed(&ee.cfg.selected_profile, cfg.selected_profile);
 
     eeprom_read_block(&prof, &ee.prof[cfg.selected_profile], sizeof(prof));
     for (uint8_t i = 0; i < 41; i++)

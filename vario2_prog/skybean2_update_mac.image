@@ -1,0 +1,4 @@
+filename = "dist/skybean2_update_mac.dmg"
+volume_name = "SkyBean2 firmware update"
+files = ["dist/SkyBean2 firmware update"]
+icon = "icon.icns"

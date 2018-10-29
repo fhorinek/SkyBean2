@@ -1,0 +1,5 @@
+filename = "dist/skybean2_app_mac.dmg"
+volume_name = "SkyBean2"
+files = ["dist/SkyBean2.app"]
+icon = "data/icon.icns"
+symlinks = { 'Applications': '/Applications' }

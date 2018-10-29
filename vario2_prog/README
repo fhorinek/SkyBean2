@@ -26,5 +26,5 @@ virtualenv mac_env
 source mac_env/bin/activate
 pip install pyserial
 pip install pyinstaller
-
+pip install dmgbuild
 

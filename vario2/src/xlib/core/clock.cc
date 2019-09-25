@@ -154,7 +154,8 @@ void ClockSetPrescaler(xlib_core_clock_prescaler_a pres)
  */
 void ClockSetPrescaler(xlib_core_clock_prescaler_a pres_a, xlib_core_clock_prescaler_b_c pres_bc)
 {
-	CLK.PSCTRL = pres_a | (0x83 & CLK.PSCTRL);
+	//CLK.PSCTRL = pres_a | (0x83 & CLK.PSCTRL);
+	CCPIOWrite(&CLK.PSCTRL, pres_a | (0x83 & CLK.PSCTRL));
 
 	switch (pres_a)
 	{
@@ -206,7 +207,9 @@ void ClockSetPrescaler(xlib_core_clock_prescaler_a pres_a, xlib_core_clock_presc
 	}
 
 //TODO: BUG register protection datasheet p. 80
-	CLK.PSCTRL = pres_bc | (0xFC & CLK.PSCTRL);
+//	CLK.PSCTRL = pres_bc | (0xFC & CLK.PSCTRL);
+
+	CCPIOWrite(&CLK.PSCTRL, pres_bc | (0xFC & CLK.PSCTRL));
 
 	switch (pres_bc)
 	{

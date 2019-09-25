@@ -141,7 +141,7 @@ void resetEEPROM()
 {
     #define EE_PAGE_SIZE            32
 
-    DEBUG("resetEEPROM\n\n");
+//    DEBUG("resetEEPROM\n\n");
     for (uint16_t i = 0; i < DEFAULT_CFG_LENGTH; i += EE_PAGE_SIZE)
     {
         uint8_t buff[EE_PAGE_SIZE];
@@ -150,8 +150,22 @@ void resetEEPROM()
         void * eeprom_adr = (void *) ((uint16_t) (&ee) + i);
 
         memcpy_P(buff, progmem_adr, size);
+
+//        DEBUG("W%u:", i);
+//        for (uint8_t j = 0; j < size; j++)
+//        	DEBUG("%02X ", buff[j]);
+//        DEBUG("\n");
+
         eeprom_busy_wait();
-        eeprom_write_block(buff, eeprom_adr, size);
+        eeprom_update_block_fixed(buff, eeprom_adr, size);
+
+//        eeprom_busy_wait();
+//        eeprom_read_block(buff, eeprom_adr, size);
+//        DEBUG("R%u:", i);
+//        for (uint8_t j = 0; j < size; j++)
+//        	DEBUG("%02X ", buff[j]);
+//        DEBUG("\n\n");
+
 
         wdt_reset();
     }

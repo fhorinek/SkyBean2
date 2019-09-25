@@ -37,7 +37,7 @@ void I2c::InitMaster(TWI_t * twi, uint8_t n, uint32_t baud, uint8_t rx_buffer, u
 	mode = I2c_MASTERMODE;
 	this->i2c = twi;
 
-	this->i2c->MASTER.BAUD = (uint32_t)((uint32_t)freq_cpu/(2 * (uint32_t)baud) - 5);
+	this->i2c->MASTER.BAUD = 0;//(uint32_t)((uint32_t)freq_cpu/(2 * (uint32_t)baud) - 5);
 
 	this->i2c->MASTER.CTRLA = TWI_MASTER_INTLVL_HI_gc | TWI_MASTER_RIEN_bm | TWI_MASTER_WIEN_bm | TWI_MASTER_ENABLE_bm;
 	this->i2c->MASTER.CTRLC =  TWI_MASTER_CMD_STOP_gc | TWI_MASTER_ACKACT_bm;

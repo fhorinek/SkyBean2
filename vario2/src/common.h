@@ -35,7 +35,7 @@
 //uart debug & timing pin
 //#define ENABLE_DEFAULT_CFG
 //#define ENABLE_DEBUG_TIMING
-#define ENABLE_DEBUG_UART
+//#define ENABLE_DEBUG_UART
 
 extern uint8_t usb_connected;
 

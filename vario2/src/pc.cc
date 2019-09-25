@@ -59,7 +59,6 @@ void pc_init()
 {
 	SetStdOut(usart_out);
 
-
 	if (usb_connected)
 	{
 		GpioSetDirection(USB_UART_TX, OUTPUT);
@@ -67,7 +66,7 @@ void pc_init()
 
 		//start uart
 		PR.PRPD = 0b01001101; //usb_uart enabled
-		usb_uart.Init(usartD0, 115200ul, 64, 64);
+		usb_uart.Init(usartD0, 115200ul, 128, 64);
 		usb_uart.SetInterruptPriority(MEDIUM);
 	}
 }
@@ -344,7 +343,7 @@ void pc_parse_data()
 	byte2 b2;
 	uint8_t data[16];
 
-	DEBUG("cmd %02X\n", cmd);
+//	DEBUG("cmd %02X\n", cmd);
 
 	if (!pc_mode && cmd != CMD_INFO)
 		return;
@@ -354,7 +353,7 @@ void pc_parse_data()
 
 	switch (cmd)
 	{
-		case(CMD_INFO): //Info
+		case(CMD_INFO): //Info AA 01 00 AB
 			pc_mode = true;
 			meas_timer.Stop();
 			buzzer_set_tone(0);
@@ -380,7 +379,7 @@ void pc_parse_data()
 			pc_set_value();
 		break;
 
-		case(CMD_RESET): //reset EEPROM
+		case(CMD_RESET): //reset EEPROM AA 01 05 FB
 			resetEEPROM();
 		break;
 
@@ -403,7 +402,7 @@ void pc_parse_data()
 		break;
 
 
-		case(0xFE): //reset to bootloader
+		case(0xFE): //reset to bootloader AA 01 FE FE
 			SystemReset();
 		break;
 
@@ -412,10 +411,10 @@ void pc_parse_data()
 
 void pc_decode(uint8_t c)
 {
-//	DEBUG("c %02X\n", c);
-
 	if (sys_tick_get() - pc_last_byte > PC_MAX_TIME)
 		pc_parser_step = PC_IDLE;
+
+//	DEBUG("c %02X %u\n", c, pc_parser_step);
 
 	pc_last_byte = sys_tick_get();
 	switch (pc_parser_step)
@@ -449,6 +448,9 @@ void pc_decode(uint8_t c)
 		case(PC_CRC):
 			if (pc_crc == c)
 				pc_parse_data();
+//			else
+//				DEBUG("pc_crc %02X\n", pc_crc);
+
 			pc_parser_step = PC_IDLE;
 		break;
 	}

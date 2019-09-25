@@ -86,7 +86,8 @@ void buzzer_set_tone(uint16_t tone)
 	}
 	else
 	{
-		next_tone = 31250 / tone;
+//		next_tone = 31250 / tone; //@8MHz
+		next_tone = 62550 / tone; //@4MHz
 
 		//buzzer is running continuously update freq now
 		if (delay_on == false)
@@ -159,8 +160,11 @@ void buzzer_set_delay(uint16_t length, uint16_t pause)
 	//with pauses (lift)
 	{
 		//convert from Hz and ms
-		next_length = 31 * length;
-		next_pause = 31 * pause;
+//		next_length = 31 * length;
+//		next_pause = 31 * pause;
+
+		next_length = 62.5 * length;
+		next_pause = 62.5 * pause;
 
 		//if previous sound was continuous (timer_buzzer_delay is not working)
 		if (delay_on == false)
@@ -192,8 +196,11 @@ void buzzer_init()
 	GpioSetInvert(portc6, ON);
 	GpioSetInvert(portc7, ON);
 
-	timer_buzzer_tone.Init(timerC4, timer_div256); //@4MHz
-	timer_buzzer_delay.Init(timerC5, timer_div256);
+	timer_buzzer_tone.Init(timerC4, timer_div64); //@4MHz
+	timer_buzzer_delay.Init(timerC5, timer_div64);
+
+//	timer_buzzer_tone.Init(timerC4, timer_div256); //@8MHz
+//	timer_buzzer_delay.Init(timerC5, timer_div256);
 
 	timer_buzzer_tone.SetMode(timer_pwm);
 	TCC4.CTRLC = 0b00001100;

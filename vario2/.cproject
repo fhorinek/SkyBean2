@@ -13,7 +13,7 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactName="${ProjName}" buildArtefactType="de.innot.avreclipse.buildArtefactType.app" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=de.innot.avreclipse.buildArtefactType.app,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release" description="" id="de.innot.avreclipse.configuration.app.release.179733524" name="Release" parent="de.innot.avreclipse.configuration.app.release" prebuildStep="">
+				<configuration artifactName="${ProjName}" buildArtefactType="de.innot.avreclipse.buildArtefactType.app" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=de.innot.avreclipse.buildArtefactType.app,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release" description="" id="de.innot.avreclipse.configuration.app.release.179733524" name="Release" optionalBuildProperties="org.eclipse.cdt.docker.launcher.containerbuild.property.selectedvolumes=,org.eclipse.cdt.docker.launcher.containerbuild.property.volumes=" parent="de.innot.avreclipse.configuration.app.release" prebuildStep="">
 					<folderInfo id="de.innot.avreclipse.configuration.app.release.179733524." name="/" resourcePath="">
 						<toolChain id="de.innot.avreclipse.toolchain.winavr.app.release.825676507" name="AVR-GCC Toolchain" superClass="de.innot.avreclipse.toolchain.winavr.app.release">
 							<option id="de.innot.avreclipse.toolchain.options.toolchain.objcopy.flash.app.release.108377901" name="Generate HEX file for Flash memory" superClass="de.innot.avreclipse.toolchain.options.toolchain.objcopy.flash.app.release" useByScannerDiscovery="false"/>
@@ -42,7 +42,7 @@
 							<tool id="de.innot.avreclipse.tool.linker.winavr.app.release.1575320802" name="AVR C Linker" superClass="de.innot.avreclipse.tool.linker.winavr.app.release"/>
 							<tool commandLinePattern="${COMMAND}  -lc -lm ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS} -lc" id="de.innot.avreclipse.tool.cpplinker.app.release.2047224682" name="AVR C++ Linker" superClass="de.innot.avreclipse.tool.cpplinker.app.release">
 								<option id="de.innot.avreclipse.cpplinker.option.libpath.134219672" name="Libraries Path (-L)" superClass="de.innot.avreclipse.cpplinker.option.libpath" useByScannerDiscovery="false"/>
-								<option id="de.innot.avreclipse.cpplinker.option.libs.1221063525" name="Libraries (-l)" superClass="de.innot.avreclipse.cpplinker.option.libs" useByScannerDiscovery="false" valueType="libs">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="de.innot.avreclipse.cpplinker.option.libs.1221063525" name="Libraries (-l)" superClass="de.innot.avreclipse.cpplinker.option.libs" useByScannerDiscovery="false" valueType="libs">
 									<listOptionValue builtIn="false" value="printf_flt"/>
 									<listOptionValue builtIn="false" value="m"/>
 								</option>
@@ -59,7 +59,7 @@
 								<option id="de.innot.avreclipse.objcopy.flash.option.output.1946257513" name="Output Filename" superClass="de.innot.avreclipse.objcopy.flash.option.output" useByScannerDiscovery="false" value="${BuildArtifactFileBaseName}.hex" valueType="string"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.objcopy.eeprom.winavr.app.release.161374593" name="AVR Create EEPROM image" superClass="de.innot.avreclipse.tool.objcopy.eeprom.winavr.app.release">
-								<option id="de.innot.avreclipse.objcopy.option.eeprom.stdopts.686466820" superClass="de.innot.avreclipse.objcopy.option.eeprom.stdopts" useByScannerDiscovery="false" value="-j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O binary" valueType="string"/>
+								<option id="de.innot.avreclipse.objcopy.option.eeprom.stdopts.686466820" name="Options to create eeprom image" superClass="de.innot.avreclipse.objcopy.option.eeprom.stdopts" useByScannerDiscovery="false" value="-j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O binary" valueType="string"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.size.winavr.app.release.1804766374" name="Print Size" superClass="de.innot.avreclipse.tool.size.winavr.app.release">
 								<option id="de.innot.avreclipse.size.option.format.1694273221" name="Size Format" superClass="de.innot.avreclipse.size.option.format" useByScannerDiscovery="false" value="de.innot.avreclipse.size.option.format.berkeley" valueType="enumerated"/>
@@ -104,11 +104,11 @@
 							<tool id="de.innot.avreclipse.tool.compiler.winavr.app.release.1426295559" name="AVR Compiler" superClass="de.innot.avreclipse.tool.compiler.winavr.app.release">
 								<option id="de.innot.avreclipse.compiler.option.debug.level.1058359818" name="Generate Debugging Info" superClass="de.innot.avreclipse.compiler.option.debug.level" useByScannerDiscovery="false" value="de.innot.avreclipse.compiler.option.debug.level.g2" valueType="enumerated"/>
 								<option id="de.innot.avreclipse.compiler.option.optimize.247364350" name="Optimization Level" superClass="de.innot.avreclipse.compiler.option.optimize" useByScannerDiscovery="false" value="de.innot.avreclipse.compiler.optimize.one" valueType="enumerated"/>
-								<option id="de.innot.avreclipse.compiler.option.incpath.287659061" name="Include Paths (-I)" superClass="de.innot.avreclipse.compiler.option.incpath" useByScannerDiscovery="false" valueType="includePath">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="de.innot.avreclipse.compiler.option.incpath.287659061" name="Include Paths (-I)" superClass="de.innot.avreclipse.compiler.option.incpath" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/tasks/task_usb}&quot;"/>
 								</option>
-								<option id="de.innot.avreclipse.compiler.option.def.498160652" name="Define Syms (-D)" superClass="de.innot.avreclipse.compiler.option.def" useByScannerDiscovery="false" valueType="definedSymbols">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="de.innot.avreclipse.compiler.option.def.498160652" name="Define Syms (-D)" superClass="de.innot.avreclipse.compiler.option.def" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="F_USB=48000000"/>
 									<listOptionValue builtIn="false" value="USE_LUFA_CONFIG_HEADER"/>
 									<listOptionValue builtIn="false" value="ARCH=ARCH_XMEGA"/>
@@ -121,13 +121,13 @@
 							<tool id="de.innot.avreclipse.tool.cppcompiler.app.release.1516465495" name="AVR C++ Compiler" superClass="de.innot.avreclipse.tool.cppcompiler.app.release">
 								<option id="de.innot.avreclipse.cppcompiler.option.debug.level.1508306777" name="Generate Debugging Info" superClass="de.innot.avreclipse.cppcompiler.option.debug.level" useByScannerDiscovery="false" value="de.innot.avreclipse.cppcompiler.option.debug.level.g2" valueType="enumerated"/>
 								<option id="de.innot.avreclipse.cppcompiler.option.optimize.834549691" name="Optimization Level" superClass="de.innot.avreclipse.cppcompiler.option.optimize" useByScannerDiscovery="false" value="de.innot.avreclipse.cppcompiler.optimize.one" valueType="enumerated"/>
-								<option id="de.innot.avreclipse.cppcompiler.option.incpath.1339896547" name="Include Paths (-I)" superClass="de.innot.avreclipse.cppcompiler.option.incpath" useByScannerDiscovery="false" valueType="includePath">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="de.innot.avreclipse.cppcompiler.option.incpath.1339896547" name="Include Paths (-I)" superClass="de.innot.avreclipse.cppcompiler.option.incpath" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/tasks/task_usb}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/skydrop_vali/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/fc/logger}&quot;"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.def.822678488" name="Define Syms (-D)" superClass="de.innot.avreclipse.cppcompiler.option.def" useByScannerDiscovery="false" valueType="definedSymbols">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="de.innot.avreclipse.cppcompiler.option.def.822678488" name="Define Syms (-D)" superClass="de.innot.avreclipse.cppcompiler.option.def" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="F_USB=48000000"/>
 									<listOptionValue builtIn="false" value="USE_LUFA_CONFIG_HEADER"/>
 									<listOptionValue builtIn="false" value="ARCH=ARCH_XMEGA"/>
@@ -140,7 +140,7 @@
 							</tool>
 							<tool id="de.innot.avreclipse.tool.linker.winavr.app.release.531913262" name="AVR C Linker" superClass="de.innot.avreclipse.tool.linker.winavr.app.release"/>
 							<tool id="de.innot.avreclipse.tool.cpplinker.app.release.1742106022" name="AVR C++ Linker" superClass="de.innot.avreclipse.tool.cpplinker.app.release">
-								<option id="de.innot.avreclipse.cpplinker.option.libs.2117576475" name="Libraries (-l)" superClass="de.innot.avreclipse.cpplinker.option.libs" useByScannerDiscovery="false" valueType="libs">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="de.innot.avreclipse.cpplinker.option.libs.2117576475" name="Libraries (-l)" superClass="de.innot.avreclipse.cpplinker.option.libs" useByScannerDiscovery="false" valueType="libs">
 									<listOptionValue builtIn="false" value="printf_flt"/>
 									<listOptionValue builtIn="false" value="m"/>
 								</option>

@@ -7,6 +7,7 @@
 
 #include "ms5611.h"
 
+extern Timer meas_timer;
 
 void MS5611::Init(I2c * i2c, uint8_t address)
 {
@@ -93,36 +94,43 @@ void MS5611::Reset()
 void MS5611::StartPressure()
 {
 	this->Write(MS5611_D1 | this->press_osr);
-
 }
 
 void MS5611::StartTemperature()
 {
 	this->Write(MS5611_D2 | this->temp_osr);
-
 }
+
 
 void MS5611::ReadPressure()
 {
 	uint32_t last_raw = this->raw_pressure;
-    this->raw_pressure = this->Read24(MS5611_READ);
-    if (this->raw_pressure == 0)
+	uint32_t tmp = this->Read24(MS5611_READ);
+
+    if (tmp == 0)
     {
-//    	assert(0);
-//        DEBUG("%lu\n", last_raw);
+    	//DEBUG("P0,%u\n", meas_timer.GetValue());
     	this->raw_pressure = last_raw;
+    }
+    else
+    {
+    	this->raw_pressure = tmp;
     }
 }
 
 void MS5611::ReadTemperature()
 {
 	uint32_t last_raw = this->raw_temperature;
-	this->raw_temperature = this->Read24(MS5611_READ);
-    if (this->raw_temperature == 0)
+	uint32_t tmp = this->Read24(MS5611_READ);
+
+    if (tmp == 0)
     {
-//    	assert(0);
-//    	DEBUG("%lu\n", last_raw);
+    	//DEBUG("T0,%u\n", meas_timer.GetValue());
     	this->raw_temperature = last_raw;
+    }
+    else
+    {
+    	this->raw_temperature = tmp;
     }
 }
 

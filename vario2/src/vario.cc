@@ -105,6 +105,7 @@ void Setup()
 	usb_connected = USB_CONNECTED;
 
 	ClockSetSource(x8MHz);
+	ClockSetPrescaler(clk_div2);
 
 	wdt_init(wdt_1s);
 
@@ -129,7 +130,7 @@ void Setup()
 	//wait to stabilize
 	_delay_ms(200);
 
-	i2c.InitMaster(i2cC, 600000ul, 8, 8);
+	i2c.InitMaster(i2cC, 1000000ul, 8, 8);
 
 	sys_tick_init();
 
@@ -148,11 +149,13 @@ void Setup()
 	sensor.CheckID();
 #endif
 
-	meas_timer.Init(timerD5, timer_div64); //at 8MHz
+	//	meas_timer.Init(timerD5, timer_div64); //at 8MHz
+	//	meas_timer.SetTop(125 * 10); // == 10ms
+	//	meas_timer.SetCompare(timer_A, 100); // == 0.64ms
 
-	meas_timer.SetTop(125 * 10); // == 10ms
-	meas_timer.SetCompare(timer_A, 100); // == 0.64ms
-
+		meas_timer.Init(timerD5, timer_div64); //at 4MHz
+		meas_timer.SetTop(625); // == 10ms
+		meas_timer.SetCompare(timer_A, 40); // == 0.64ms
 
 	meas_timer.EnableInterrupts(timer_overflow | timer_compareA);
 	meas_timer.Start();
@@ -177,8 +180,7 @@ ISR(timerD5_overflow_interrupt)
 	sensor.ReadPressure();
 	sensor.StartTemperature();
 
-	sensor.CompensateTemperature();
-	sensor.CompensatePressure();
+
 
 #ifdef ENABLE_DEBUG_TIMING
 	GpioWrite(DEBUG_PIN, LO);
@@ -195,6 +197,8 @@ ISR(timerD5_compareA_interrupt)
 	sensor.ReadTemperature();
 	sensor.StartPressure();
 
+	sensor.CompensateTemperature();
+	sensor.CompensatePressure();
 
 	//normal mode
 	if (skip > FIRST_SKIP)
@@ -245,6 +249,8 @@ int main()
     DEBUG("kalman Q %0.5f\n", cfg.kalman_q);
     DEBUG("kalman R %0.5f\n", cfg.kalman_r);
     DEBUG("kalman P %0.5f\n", cfg.kalman_p);
+
+    dumpEE(1);
 #endif
 
 	while(1)

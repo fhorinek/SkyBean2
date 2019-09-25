@@ -10,7 +10,8 @@ pip install pyinstaller
 
 windows_env (using wine on linux)
 
-export WINEPREFIX="[absolute path here]vario2_prog/windows_env"
+export WINEPREFIX="`pwd`/windows_env"
+wget https://www.python.org/ftp/python/2.7.15/python-2.7.15.msi
 wine start python-2.7.15.msi
 winecfg: change Z: from / to this folder (otherwise eclipse will try to index root /)
 wine pip install pyserial

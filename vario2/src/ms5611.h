@@ -36,7 +36,7 @@
 class MS5611
 {
 public:
-	Timer timer;
+//	Timer timer;
 
 	uint16_t calibration_C1;
 	uint16_t calibration_C2;

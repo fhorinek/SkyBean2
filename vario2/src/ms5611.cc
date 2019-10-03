@@ -104,29 +104,22 @@ void MS5611::StartTemperature()
 
 void MS5611::ReadPressure()
 {
-	uint32_t last_raw = this->raw_pressure;
-	uint32_t tmp = this->Read24(MS5611_READ);
+	this->raw_pressure = this->Read24(MS5611_READ);
 
-    if (tmp == 0)
+    if (this->raw_pressure == 0)
     {
-    	//DEBUG("P0,%u\n", meas_timer.GetValue());
-    	this->raw_pressure = last_raw;
-    }
-    else
-    {
-    	this->raw_pressure = tmp;
+    	DEBUG("P0,%u\n");
     }
 }
 
+uint16_t T0_err = 0;
 void MS5611::ReadTemperature()
 {
-	uint32_t last_raw = this->raw_temperature;
 	uint32_t tmp = this->Read24(MS5611_READ);
 
     if (tmp == 0)
     {
-    	//DEBUG("T0,%u\n", meas_timer.GetValue());
-    	this->raw_temperature = last_raw;
+    	DEBUG("T0,%u\n", T0_err++);
     }
     else
     {

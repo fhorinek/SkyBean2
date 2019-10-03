@@ -13,9 +13,11 @@
 		do {\
 			if (usb_connected){\
 				printf_P(PSTR(format), ##__VA_ARGS__);\
-				while(!usb_uart.isTxBufferEmpty());\
 			}\
 		} while(0)\
+
+				/*while(!usb_uart.isTxBufferEmpty());\*/
+
 
 	#define assert(cond) \
 		do{ \

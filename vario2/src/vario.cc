@@ -155,7 +155,7 @@ void Setup()
 
 		meas_timer.Init(timerD5, timer_div64); //at 4MHz
 		meas_timer.SetTop(625); // == 10ms
-		meas_timer.SetCompare(timer_A, 40); // == 0.64ms
+		meas_timer.SetCompare(timer_A, 57); // == 0.916ms
 
 	meas_timer.EnableInterrupts(timer_overflow | timer_compareA);
 	meas_timer.Start();
@@ -250,7 +250,7 @@ int main()
     DEBUG("kalman R %0.5f\n", cfg.kalman_r);
     DEBUG("kalman P %0.5f\n", cfg.kalman_p);
 
-    dumpEE(1);
+    //dumpEE(1);
 #endif
 
 	while(1)

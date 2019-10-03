@@ -355,7 +355,7 @@ void Usart::SetInterruptPriority(uint8_t p)
  */
 void Usart::Write(uint8_t c)
 {
-	while (this->tx_len == this->tx_buffer_size);
+	//while (this->tx_len == this->tx_buffer_size);
 
 	if (this->tx_len || !(this->usart->STATUS & USART_DREIF_bm))
 	{

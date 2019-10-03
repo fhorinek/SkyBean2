@@ -67,7 +67,7 @@ void pc_init()
 		//start uart
 		PR.PRPD = 0b01001101; //usb_uart enabled
 		usb_uart.Init(usartD0, 115200ul, 128, 64);
-		usb_uart.SetInterruptPriority(MEDIUM);
+		usb_uart.SetInterruptPriority(LOW);
 	}
 }
 
@@ -479,7 +479,10 @@ void pc_step()
 		if (uart_next_step < sys_tick_get() && !pc_mode)
 		{
 			char tmp[83];
-			sprintf_P(tmp, PSTR("LK8EX1,%0.0f,99999,%0.0f,%0.0f,999,"), pressure, (climb * 100.0), temperature / 10);
+
+//			printf_P(PSTR("%0.0f,%0.0f,%0.4f,%0.2f\n"), pressure, raw_pressure, climb, temperature);
+
+			sprintf_P(tmp, PSTR("LK8EX1,%0.0f,99999,%0.0f,%0.0f,999,"), pressure, (climb * 100.0), temperature);
             printf_P(PSTR("$%s*%02X\r\n"), tmp, nmea_checksum(tmp));
 //			sprintf_P(tmp, PSTR("POV,R,%0.2f,TE,%0.2f,T,%0.2f"), pressure, climb, temperature / 10.0);
 //			printf_P(PSTR("$%s*%02X\r\n"), tmp, nmea_checksum(tmp));

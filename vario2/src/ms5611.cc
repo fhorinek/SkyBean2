@@ -119,7 +119,7 @@ void MS5611::ReadTemperature()
 
     if (tmp == 0)
     {
-    	DEBUG("T0,%u\n", T0_err++);
+  //  	DEBUG("T0,%u\n", T0_err++);
     }
     else
     {

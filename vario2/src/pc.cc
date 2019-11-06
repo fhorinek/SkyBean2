@@ -414,7 +414,7 @@ void pc_decode(uint8_t c)
 	if (sys_tick_get() - pc_last_byte > PC_MAX_TIME)
 		pc_parser_step = PC_IDLE;
 
-//	DEBUG("c %02X %u\n", c, pc_parser_step);
+	DEBUG("c %02X %u\n", c, pc_parser_step);
 
 	pc_last_byte = sys_tick_get();
 	switch (pc_parser_step)
@@ -448,8 +448,8 @@ void pc_decode(uint8_t c)
 		case(PC_CRC):
 			if (pc_crc == c)
 				pc_parse_data();
-//			else
-//				DEBUG("pc_crc %02X\n", pc_crc);
+			else
+				DEBUG("pc_crc %02X\n", pc_crc);
 
 			pc_parser_step = PC_IDLE;
 		break;

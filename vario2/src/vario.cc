@@ -171,7 +171,6 @@ ISR(timerD5_overflow_interrupt)
 {
 	//Because F*ck you xmega32E5
 	meas_timer.ClearOverflowFlag();
-	wdt_reset();
 
 #ifdef ENABLE_DEBUG_TIMING
 	GpioWrite(DEBUG_PIN, HI);
@@ -250,7 +249,7 @@ int main()
     DEBUG("kalman R %0.5f\n", cfg.kalman_r);
     DEBUG("kalman P %0.5f\n", cfg.kalman_p);
 
-    //dumpEE(1);
+    dumpEE(1);
 #endif
 
 	while(1)
@@ -312,6 +311,8 @@ int main()
 			if (wake_cnt == 100)
 				SystemReset();
 		}
+
+		wdt_reset();
 
 		if (usb_connected != USB_CONNECTED)
 			SystemReset();

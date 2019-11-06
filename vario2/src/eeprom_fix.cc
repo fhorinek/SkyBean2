@@ -12,12 +12,7 @@ void eeprom_update_byte_fixed(uint8_t *__p, uint8_t __value)
 
 void eeprom_update_word_fixed(uint16_t *__p, uint16_t __value)
 {
-	eeprom_busy_wait();
-	uint16_t value = eeprom_read_word(__p);
-	eeprom_busy_wait();
-
-	if (value != __value)
-		eeprom_write_block(&__value, (void *)__p, sizeof(uint16_t));
+	eeprom_update_block_fixed(&__value, (void *)__p, sizeof(uint16_t));
 }
 
 void eeprom_update_block_fixed(void *__src, void *__dst, size_t __n)

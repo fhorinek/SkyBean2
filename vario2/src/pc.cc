@@ -68,6 +68,9 @@ void pc_init()
 		PR.PRPD = 0b01001101; //usb_uart enabled
 		usb_uart.Init(usartD0, 115200ul, 128, 64);
 		usb_uart.SetInterruptPriority(LOW);
+
+
+		//dumpEE(true);
 	}
 }
 

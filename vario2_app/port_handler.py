@@ -256,6 +256,7 @@ class port_handler(MyThread):
             data = list(string)
         
         self.write("write", [CMD_SET_VALUE, value_id] + data)
+        self.last_write_name = name
 
     def poke(self, port):
         try:
